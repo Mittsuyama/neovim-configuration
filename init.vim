@@ -1,55 +1,52 @@
-# my_neovim
+" ------------------------------------------------------------------------------------------------------------------------------------------ 
+" ----------------------------------------------------------------- Basics -----------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------------------
 
-## init neovim
+" ---------------- cursor ------------------
+set number
+set cul
 
-### install
+" ---------------- innner search ----------------
+set showmatch
+set incsearch
+set ignorecase
+set wildmenu
 
-```bash
-# macos
-brew install neovim
-# ubuntu
-sudo apt-get install neovim
-```
+" ---------------- different indent depends on file type with space ----------------
+set expandtab
+set ai
+set sw=4
+set ts=4
+set sts=4
+autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript set ai
+autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript set sw=2
+autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript set ts=2
+autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript set sts=2
 
-### vim-plug
+" -------------- fix a little bug ----------------
+set backspace=2
 
-```bash
-# neovim configuration dirs
-mkdir -p ~/.config/nvim/autoload ~/.config/nvim/plugged
 
-# install vim-plug
-curl -fLo ~/.config/nvim/autoload/plug.vim  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
 
-plug syntax
 
-```vim
+
+
+" ------------------------------------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------- Plugins ------------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------------------
+
+
+" ---------------- plugins ----------------
 call plug#begin('~/.config/nvim/plugged')
-
-Plug 'xxxx/xxxx'
-
-call plug#end()
-```
-
-run install plug, run neovim command
-
-```vim
-:PlugInstall
-```
-
-## Plugs
-
-```vim
-" ----------------------- plugins -----------------------
-call plug#begin('~/.config/nvim/plugged')
-" ----------------------- basic plugins -----------------------
+" ---------------- basic plugins ----------------
+Plug 'joshdick/onedark.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" ----------------------- pro plugins -----------------------
+" ---------------- pro plugins ----------------
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver'
@@ -57,21 +54,21 @@ Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-eslint'
 call plug#end()
 
-" ----------------------- highlight for large files -----------------------
+" ---------------- highlight for large files ----------------
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-" ----------------------- coc -----------------------
+" ---------------- coc ----------------
 let g:coc_global_extensions = [
   \ 'coc-tsserver'
   \ ]
  
-" ----------------------- eslint -----------------------
+" ---------------- eslint ----------------
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
 
-" ----------------------- Tool tip documentation and diagnostics -----------------------
+" ---------------- Tool tip documentation and diagnostics ----------------
 function! ShowDocIfNoDiagnostic(timer_id)
   if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
     silent call CocActionAsync('doHover')
@@ -85,7 +82,7 @@ endfunction
 autocmd CursorHoldI * :call <SID>show_hover_doc()
 autocmd CursorHold * :call <SID>show_hover_doc()
 
-" ----------------------- navigation -----------------------
+" -------------- navigation ----------------
 " goto definition
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -101,17 +98,12 @@ nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
 nmap <leader>do <Plug>(coc-codeaction)
 " renaming a symbol
 nmap <leader>rn <Plug>(coc-rename)
-```
 
 
-## Theme
 
-```vim
-" plugin
-Plug 'joshdick/onedark.vim'
 
-" use
-" ------------------------------------------------------------------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------------------------------------------------------------------ 
 " ----------------------------------------------------------------- Themes -----------------------------------------------------------------
 " ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -134,4 +126,5 @@ endif
 " use onedark
 syntax on
 colorscheme onedark
-```
+
+
