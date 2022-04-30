@@ -135,3 +135,7 @@ endif
 syntax on
 colorscheme onedark
 ```
+
+## Other Blog
+
+![https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/](https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/)
