@@ -1,6 +1,8 @@
 " ------------------------------------------------------------------------------------------------------------------------------------------ 
 " ----------------------------------------------------------------- Basics -----------------------------------------------------------------
 " ------------------------------------------------------------------------------------------------------------------------------------------
+set nowrap
+:let mapleader = ";"
 
 " ---------------- cursor ------------------
 set number
@@ -26,6 +28,10 @@ autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,x
 " -------------- fix a little bug ----------------
 set backspace=2
 
+" -------------- use system clipboar ----------------
+set clipboard+=unnamedplus
+
+
 
 
 
@@ -39,18 +45,18 @@ set backspace=2
 " ---------------- plugins ----------------
 call plug#begin('~/.config/nvim/plugged')
 " ---------------- basic plugins ----------------
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ---------------- pro plugins ----------------
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver'
-" eslint
 Plug 'neoclide/coc-eslint'
 call plug#end()
 
@@ -58,49 +64,46 @@ call plug#end()
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-" ---------------- coc ----------------
-let g:coc_global_extensions = [
-  \ 'coc-tsserver'
-  \ ]
- 
-" ---------------- eslint ----------------
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
 
-" ---------------- Tool tip documentation and diagnostics ----------------
-function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
-    silent call CocActionAsync('doHover')
-  endif
-endfunction
+" ---------------- NerdTree ----------------
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
-function! s:show_hover_doc()
-  call timer_start(500, 'ShowDocIfNoDiagnostic')
-endfunction
+" ---------------- LeaderF ----------------
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-autocmd CursorHoldI * :call <SID>show_hover_doc()
-autocmd CursorHold * :call <SID>show_hover_doc()
+" ignore files
+let g:Lf_WildIgnore={'file':['.DS_Store', '*.vcxproj'],'dir':['node_modules']}
 
-" -------------- navigation ----------------
-" goto definition
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gr <Plug>(coc-references)
-" jump error
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" diagnostics list
-nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
-" fuzzy search
-nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
-" performing code aciton
-nmap <leader>do <Plug>(coc-codeaction)
-" renaming a symbol
-nmap <leader>rn <Plug>(coc-rename)
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
 
-
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 
 " ------------------------------------------------------------------------------------------------------------------------------------------ 
@@ -126,5 +129,4 @@ endif
 " use onedark
 syntax on
 colorscheme onedark
-
 
