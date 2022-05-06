@@ -11,6 +11,12 @@ brew install neovim
 sudo apt-get install neovim
 ```
 
+### language server
+
+```bash
+npm i -g typescript typesscript-language-server
+```
+
 ### vim-plug
 
 ```bash
@@ -105,6 +111,8 @@ nmap <leader>rn <Plug>(coc-rename)
 
 
 ## Theme
+
+copy `plugged/vim-one/colors/one.vim` to somewhere to run
 
 ```vim
 " plugin
