@@ -1,118 +1,80 @@
-" ------------------------------------------------------------------------------------------------------------------------------------------ 
-" ----------------------------------------------------------------- Basics -----------------------------------------------------------------
-" ------------------------------------------------------------------------------------------------------------------------------------------
-set nowrap
-:let mapleader = ";"
+" Fundamentals "{{{
+" ---------------------------------------------------------------------
+autocmd!
+scriptencoding utf-8
 
-" ---------------- cursor ------------------
+" incremental substitution (neovim)
+if has('nvim')
+  set inccommand=split
+endif
+
+set encoding=utf-8
+set title
 set number
-set cul
+set wildmenu
+set nowrap
+set autoindent
 
-" ---------------- innner search ----------------
 set showmatch
+set hlsearch
 set incsearch
 set ignorecase
-set wildmenu
 
-" ---------------- different indent depends on file type with space ----------------
+syntax on
+filetype plugin on
+
+let mapleader=";"
+
 set expandtab
 set ai
-set sw=4
-set ts=4
-set sts=4
-autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript set ai
-autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript set sw=2
-autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript set ts=2
-autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript set sts=2
+set si
+set sw=2
+set ts=2
+set sts=2
 
-" -------------- fix a little bug ----------------
+" file types
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescriptreact
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.mdx set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
+" Fish
+au BufNewFile,BufRead *.fish set filetype=fish
+
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+
+autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
 set backspace=2
 
-" -------------- use system clipboar ----------------
-set clipboard+=unnamedplus
+"}}}
 
+runtime ./plug.vim
 
+" cross platform "{{{
+" ---------------------------------------------------------------------
+if has("unix")
+  let s:uname = system("uname -s")
+  " Do Mac stuff
+  if s:uname == "Darwin\n"
+    runtime ./macos.vim
+  endif
+endif
+if has('win32')
+  runtime ./windows.vim
+endif
 
+runtime ./maps.vim
 
+"}}}
 
-
-
-" ------------------------------------------------------------------------------------------------------------------------------------------
-" --------------------------------------------------------------- Plugins ------------------------------------------------------------------
-" ------------------------------------------------------------------------------------------------------------------------------------------
-
-
-" ---------------- plugins ----------------
-call plug#begin('~/.config/nvim/plugged')
-" ---------------- basic plugins ----------------
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-Plug 'preservim/nerdtree'
-Plug 'joshdick/onedark.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
-" ---------------- pro plugins ----------------
-" coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-eslint'
-call plug#end()
-
-" ---------------- highlight for large files ----------------
-autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
-
-" ---------------- NerdTree ----------------
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-
-" ---------------- LeaderF ----------------
-" don't show the help in normal mode
-let g:Lf_HideHelp = 1
-let g:Lf_UseCache = 0
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_IgnoreCurrentBufferName = 1
-" popup mode
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-
-" ignore files
-let g:Lf_WildIgnore={'file':['.DS_Store', '*.vcxproj'],'dir':['node_modules']}
-
-let g:Lf_ShortcutF = "<leader>ff"
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-
-" search visually selected text literally
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-noremap go :<C-U>Leaderf! rg --recall<CR>
-
-" should use `Leaderf gtags --update` first
-let g:Lf_GtagsAutoGenerate = 0
-let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-
-
-" ------------------------------------------------------------------------------------------------------------------------------------------ 
-" ----------------------------------------------------------------- Themes -----------------------------------------------------------------
-" ------------------------------------------------------------------------------------------------------------------------------------------
-
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+" theme "{{{
+" ---------------------------------------------------------------------
 if (empty($TMUX))
   if (has("nvim"))
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -126,7 +88,13 @@ if (empty($TMUX))
   endif
 endif
 
-" use onedark
-syntax on
-colorscheme onedark
+runtime ./colors/one.vim
+set background=dark        " for the light version
+let g:airline_theme='one'
+let g:one_allow_italics = 1 " I love italic for comments
+colorscheme one
+
+"}}}
+
+set exrc
 
