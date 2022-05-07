@@ -23,8 +23,6 @@ set ignorecase
 syntax on
 filetype plugin on
 
-let mapleader=";"
-
 set expandtab
 set ai
 set si
