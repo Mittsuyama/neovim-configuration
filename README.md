@@ -5,7 +5,7 @@
 install language server
 
 ```bash
-npm i -g typescript typescript-language-server
+npm i -g typescript typescript-language-server diagnostic-languageserver
 ```
 
 install vim-plug
