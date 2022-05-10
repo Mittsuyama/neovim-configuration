@@ -14,12 +14,6 @@ map <leader>tm :tabmove<cr>
 map <leader>tt :tabnext<cr>
 
 " --- fuzzy find ---
-nmap <C-p> :Files<CR>
+nmap <C-p> :FZF<CR>
 nmap <C-e> :Buffers<CR>
 let g:fzf_action = { 'ctrl-e': 'edit' }
-
-" --- Resize window ---
-nmap <C-w><left> <C-w><
-nmap <C-w><right> <C-w>>
-nmap <C-w><up> <C-w>+
-nmap <C-w><down> <C-w>-
