@@ -12,6 +12,15 @@ install language server
 npm i -g typescript typescript-language-server diagnostic-languageserver
 ```
 
+install command line tools
+
+```bash
+brew install fzf ripgrep
+# suggest change default cl tool used by fzf.vim
+# brew install fd bat
+brew
+```
+
 install vim-plug
 
 ```bash
