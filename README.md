@@ -40,7 +40,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim  https://raw.githubusercontent.com/ju
 
 ```bash
 # ~/.config/nvim/plug.vim
-nvim plug.vim
+cd ~/.config/nvim/ && nvim plug.vim
 ```
 
 5. run neovim command
