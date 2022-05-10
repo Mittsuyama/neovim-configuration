@@ -1,10 +1,10 @@
 # neovim configuration
 
-**require**
+## require
 
 - neovim version > 7.0, macOS system use `brew install --HEAD neovim` to install nightly neovim or select determined pre-built version at [neovim-release](https://github.com/neovim/neovim/releases/tag/v0.7.0)
 
-## prepare
+## install
 
 1. install language server and command line tools
 
