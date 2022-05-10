@@ -54,12 +54,13 @@ cd ~/.config/nvim/ && nvim plug.vim
 some recomanded zshrc content
 
 ```zsh
-# alias ls="lsd -al --group-dirs=first --blocks=permission,date,name --date=relative"
+alias ls="lsd -al --group-dirs=first --blocks=permission,date,name --date=relative"
 alias cat="bat --theme=OneHalfLight"
-alias fvim="vim -o \`fzf\`"
+alias fm="vim -o \`fzf\`"
+alias gdiff="git diff --name-only --relative --diff-filter=d | xargs bat --theme=OneHalfLight --diff"
 
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f -H"
-export FZF_DEFAULT_OPTS="--height 60% --ansi --preview-window 'right:50%' --preview 'bat --color=always --theme=OneHalfLight --style=header,grid,numbers,changes --line-range :300 {}'"
+export FZF_DEFAULT_OPTS="--height 60% --ansi --preview-window 'right:50%' --preview 'bat --color=always --theme=OneHalfLight --style=header,grid,numbers --diff {}'"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --color=fg:#494b53,bg:#fafafa,hl:#a0a1a7
