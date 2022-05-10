@@ -6,13 +6,13 @@
 
 ## prepare
 
-install language server
+1. install language server
 
 ```bash
 npm i -g typescript typescript-language-server diagnostic-languageserver
 ```
 
-install command line tools
+2. install command line tools
 
 ```bash
 brew install fzf ripgrep
@@ -20,7 +20,7 @@ brew install fzf ripgrep
 brew install fd bat
 ```
 
-install vim-plug
+3. install vim-plug
 
 ```bash
 # neovim configuration dirs
@@ -30,23 +30,22 @@ mkdir -p ~/.config/nvim/autoload ~/.config/nvim/plugged
 curl -fLo ~/.config/nvim/autoload/plug.vim  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-plug syntax
+4. install plug
 
-```vim
-call plug#begin('~/.config/nvim/plugged')
-
-Plug 'xxxx/xxxx'
-
-call plug#end()
+```bash
+cd ~/.config/nvim
+vim plug.vim
 ```
 
-run install plug, run neovim command
+5. run neovim command
 
 ```vim
 :PlugInstall
 ```
 
 ## .zshrc
+
+some recomanded zshrc content
 
 ```zsh
 # alias ls="lsd -al --group-dirs=first --blocks=permission,date,name --date=relative"
