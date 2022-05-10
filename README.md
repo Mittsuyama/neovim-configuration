@@ -23,11 +23,7 @@ brew install fd bat
 
 ```bash
 # install repo
-cd ~/.config
-git clone https://github.com/Mittsuyama/neovim-configuration.git
-
-# chagne dir name
-mv neovim-configuration nvim
+cd ~/.config && git clone https://github.com/Mittsuyama/neovim-configuration.git nvim
 ```
 
 3. install vim-plug
@@ -44,7 +40,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim  https://raw.githubusercontent.com/ju
 
 ```bash
 # ~/.config/nvim/plug.vim
-vim plug.vim
+nvim plug.vim
 ```
 
 5. run neovim command
