@@ -9,6 +9,11 @@ saga.init_lsp_saga {
   hint_sign = '',
   infor_sign = '',
   border_style = "round",
+  finder_action_keys = {
+    vsplit = "v",
+    split = "s",
+    quit = "<ESC>"
+  }
 }
 
 EOF
