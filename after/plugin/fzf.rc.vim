@@ -14,9 +14,10 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+let g:fzf_preview_window = ['right:50%']
+
 let $FZF_DEFAULT_COMMAND = "fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f -H"
-let $FZF_DEFAULT_OPTS = "--height 60% --ansi --preview-window 'right:50%' --preview 'bat --color=always --theme=OneHalfLight --style=header,grid,numbers,changes --line-range :300 {}'"
-let $FZF_PREVIEW_COMMAND = "bat --color=always --theme=OneHalfLight --style=header,grid,numbers,changes --line-range :300 {}"
+let $FZF_PREVIEW_COMMAND = "bat --color=always --theme=OneHalfLight --style=${BAT_STYLE:-numbers} --pager=nenver {}"
 
 "{{{ backup
 " preview window custom style
