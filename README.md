@@ -17,8 +17,7 @@ install command line tools
 ```bash
 brew install fzf ripgrep
 # suggest change default cl tool used by fzf.vim
-# brew install fd bat
-brew
+brew install fd bat
 ```
 
 install vim-plug
