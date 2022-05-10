@@ -6,18 +6,28 @@
 
 ## prepare
 
-1. install language server
+1. install language server and command line tools
 
 ```bash
+# language server
 npm i -g typescript typescript-language-server diagnostic-languageserver
-```
 
-2. install command line tools
-
-```bash
+# fuzzy finder and regex finder
 brew install fzf ripgrep
+
 # suggest change default cl tool used by fzf.vim
 brew install fd bat
+```
+
+2. install this repo
+
+```bash
+# install repo
+cd ~/.config
+git clone https://github.com/Mittsuyama/neovim-configuration.git
+
+# chagne dir name
+mv neovim-configuration nvim
 ```
 
 3. install vim-plug
@@ -33,7 +43,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim  https://raw.githubusercontent.com/ju
 4. install plug
 
 ```bash
-cd ~/.config/nvim
+# ~/.config/nvim/plug.vim
 vim plug.vim
 ```
 
