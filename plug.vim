@@ -34,6 +34,9 @@ if has("nvim")
   " --- nerd tree ---
   Plug 'preservim/nerdtree'
 
+  " --- plugin like Gitlens ----
+  Plug 'APZelos/blamer.nvim'
+
   " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
   " Plug 'kristijanhusak/defx-git'
   " Plug 'kristijanhusak/defx-icons'
