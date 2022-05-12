@@ -26,9 +26,9 @@ filetype plugin on
 set expandtab
 set ai
 set si
-set sw=2
-set ts=2
-set sts=2
+set sw=4
+set ts=4
+set sts=4
 
 " file types
 au BufNewFile,BufRead *.es6 setf javascript
@@ -44,9 +44,7 @@ au BufNewFile,BufRead *.fish set filetype=fish
 
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
-autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript,ruby,coffee,yaml,json set ai sw=2 ts=2 sts=2
 
 set backspace=2
 
@@ -96,3 +94,4 @@ colorscheme one
 
 set exrc
 
+" vim: set foldmethod=marker foldlevel=0:
