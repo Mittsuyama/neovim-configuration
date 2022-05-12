@@ -5,7 +5,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-fugitive'
-Plug 'cohama/lexima.vim'
+" Plug 'cohama/lexima.vim'
 
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
