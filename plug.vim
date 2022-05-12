@@ -15,7 +15,6 @@ if has("nvim")
   Plug 'folke/lsp-colors.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'kyazdani42/nvim-web-devicons'
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -31,11 +30,22 @@ if has("nvim")
   Plug '/opt/homebrew/opt/fzf'
   Plug 'junegunn/fzf.vim'
 
-  " --- nerd tree ---
-  Plug 'preservim/nerdtree'
-
   " --- plugin like Gitlens ----
   Plug 'APZelos/blamer.nvim'
+
+  " --- first screen ---
+  Plug 'mhinz/vim-startify'
+
+  " --- indent line ---
+  Plug 'lukas-reineke/indent-blankline.nvim'
+
+  " --- nerd tree ---
+  Plug 'preservim/nerdtree'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+  " --- use {gcc} to comment a line
+  Plug 'tpope/vim-commentary'
 
   " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
   " Plug 'kristijanhusak/defx-git'
