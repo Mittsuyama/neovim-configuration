@@ -9,8 +9,11 @@ lua <<EOF
   cmp.setup {
     snippet = {
       expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
