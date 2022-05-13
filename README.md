@@ -1,6 +1,6 @@
-# neovim configuration
+# Neovim Configuration
 
-## screen shot
+## Screenshot
 
 smart complete
 
@@ -8,13 +8,13 @@ smart complete
 
 file fuzzy finder
 
-![file-fuzzy-filder](./files-fuzzy-finder.jpg)
+![file-fuzzy-filder](./files.jpg)
 
 global fuzzy finder
 
-![global-fuzzy-finder](./global-fuzzy-finder.jpg)
+![global-fuzzy-finder](./global.jpg)
 
-## require
+## Require
 
 neovim version > 7.0, macOS system use 
 
@@ -24,7 +24,7 @@ brew install --HEAD neovim
 
 to install nightly neovim or select determined pre-built version at [neovim-release](https://github.com/neovim/neovim/releases/tag/v0.7.0)
 
-## install
+## Installation
 
 1. install language server and command line tools
 
