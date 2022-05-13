@@ -4,7 +4,7 @@
 
 smart complete
 
-![smart_complete](./cmp.jpg)
+![smart_complete](./complete.jpg)
 
 file fuzzy finder
 
