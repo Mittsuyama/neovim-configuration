@@ -89,6 +89,14 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --color=marker:#87ff00,spinner:#af5fff,header:#a626a4'
 ```
 
+## Use Dark Theme
+
+change `init.vim` background variable
+
+```bash
+set background=dark
+```
+
 ## Reference
 
 1. [Linux 下 Neovim 配置 Python 开发环境指南](https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/)
