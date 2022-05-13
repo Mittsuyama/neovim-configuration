@@ -91,10 +91,28 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 
 ## Use Dark Theme
 
-change `init.vim` background variable
+1. change `init.vim` background variable
 
-```bash
+```vim
 set background=dark
+```
+
+2. change `after/plugin/indent-blankline.rc.lua` line 3:
+
+```lua
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#666666 gui=nocombine]]
+```
+
+3. change `after/plugin/lualine.rc.lua` line 7:
+
+```lua
+    theme = 'onelight',
+```
+
+4. change `after/plugin/fzf.rc.vim` line 20:
+
+```vim
+let $FZF_PREVIEW_COMMAND = "bat --color=always --theme=OneHalfLight --style=${BAT_STYLE:-numbers} --pager=nenver {}"
 ```
 
 ## Reference
