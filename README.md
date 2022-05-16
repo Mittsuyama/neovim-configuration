@@ -71,7 +71,7 @@ cd ~/.config/nvim/ && nvim plug.vim
 
 ## .zshrc
 
-some recomanded zshrc content
+some recommended .zshrc configuration
 
 ```zsh
 alias ls="lsd -al --group-dirs=first --blocks=permission,date,name --date=relative"
