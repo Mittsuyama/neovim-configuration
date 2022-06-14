@@ -13,19 +13,20 @@ set title
 set number
 set wildmenu
 set nowrap
+set nowrapscan
 set autoindent
 
 set showmatch
 set hlsearch
 set incsearch
 set ignorecase
+set smartcase
 
 syntax on
 filetype plugin on
 
 set expandtab
 set ai
-set si
 set sw=4
 set ts=4
 set sts=4
@@ -44,7 +45,7 @@ au BufNewFile,BufRead *.fish set filetype=fish
 
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
-autocmd FileType typescriptreact,javascriptreact,less,scss,javascript,html,css,xml,typescript,ruby,coffee,yaml,json set ai sw=2 ts=2 sts=2
+autocmd FileType vim,typescriptreact,javascriptreact,tsx,jsx,less,scss,javascript,html,css,xml,typescript,ruby,coffee,yaml,json set sw=2 ts=2 sts=2
 
 set backspace=2
 
@@ -95,3 +96,4 @@ colorscheme one
 set exrc
 
 " vim: set foldmethod=marker foldlevel=0:
+
