@@ -32,6 +32,9 @@ to install nightly neovim or select determined pre-built version at [neovim-rele
 # language server
 npm i -g typescript typescript-language-server diagnostic-languageserver
 
+# prepare for eslint
+brew install efm-langserver; npm i -g eslint_d
+
 # fuzzy finder and regex finder
 brew install fzf ripgrep
 
