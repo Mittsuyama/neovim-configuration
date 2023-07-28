@@ -77,19 +77,34 @@ cd ~/.config/nvim/ && nvim plug.vim
 some recommended .zshrc configuration
 
 ```zsh
+theme="OneHalfLight"
+
 alias ls="lsd -al --group-dirs=first --blocks=permission,date,name --date=relative"
-alias cat="bat --theme=OneHalfLight"
+alias cat="bat --theme=${theme}"
+alias gda="git diff --name-only --relative --diff-filter=d | xargs bat --theme=${theme} --diff"
+
+source $HOME/.cargo/env
+
+
+# --------------------------------------------- FZF OPTIONS START ---------------------------------------------
+
 alias fm="vim -o \`fzf\`"
-alias gdiff="git diff --name-only --relative --diff-filter=d | xargs bat --theme=OneHalfLight --diff"
-
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f -H"
-export FZF_DEFAULT_OPTS="--height 60% --ansi --preview-window 'right:50%' --preview 'bat --color=always --theme=OneHalfLight --style=header,grid,numbers --diff {}'"
+export FZF_DEFAULT_OPTS="--height 60% --ansi --preview-window 'right:50%' --preview 'bat --color=always --theme=${theme} --style=header,grid,numbers {}'"
 
+# # light theme
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --color=fg:#494b53,bg:#fafafa,hl:#a0a1a7
  --color=fg+:#494b53,bg+:#f0f0f0,hl+:#a626a4
  --color=info:#c18401,prompt:#d7005f,pointer:#a626a4
  --color=marker:#87ff00,spinner:#af5fff,header:#a626a4'
+
+# --------------------------------------------- FZF OPTIONS END ---------------------------------------------
+
+# fzf completion
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 ```
 
 ## Use Dark Theme
